@@ -1,0 +1,25 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "compile wasm",
+      "type": "shell",
+      "command": "emcc -s WASM=1 -s EXPORTED_FUNCTIONS=\"['_sayName', '_int_sqrt', '_wasmForLoop']\" -o hello.js hello.cpp",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "taskName": "run",
+      "type": "shell",
+      "command": "emrun --port 8080 .",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+  ]
+}
